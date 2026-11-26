@@ -227,7 +227,7 @@ export const reviews = [
     kind: "Perrita de ejemplo",
     text: "Llegamos asustadas y nos fuimos con Lola dormida en el regazo. Nos explicaron cada cosa sin mirar el reloj.",
     stars: 5,
-    image: "/pets/lola.jpg",
+    image: "/pets/lola.svg",
     alt: "Ilustración de ejemplo de Lola, una perrita",
   },
   {
@@ -236,7 +236,7 @@ export const reviews = [
     kind: "Gato de ejemplo",
     text: "Mishi no saluda a nadie y acá se dejó revisar. Salimos con un plan claro y el transportín todavía entero.",
     stars: 5,
-    image: "/pets/mishi.jpg",
+    image: "/pets/mishi.svg",
     alt: "Ilustración de ejemplo de Mishi, un gato",
   },
   {
@@ -245,7 +245,7 @@ export const reviews = [
     kind: "Ave de ejemplo",
     text: "Pensé que una clínica chica no vería aves. Pico salió más tranquilo que yo, y yo salí entendiendo el tratamiento.",
     stars: 5,
-    image: "/pets/pico.jpg",
+    image: "/pets/pico.svg",
     alt: "Ilustración de ejemplo de Pico, un loro",
   },
 ];
