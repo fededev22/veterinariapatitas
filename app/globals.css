@@ -1,0 +1,377 @@
+@import "tailwindcss";
+
+/* El toggle escribe .dark en <html>. El modo oscuro no sigue solo al sistema. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --bg: #fff8f1;
+  --ink: #16332f;
+  --muted: #3d5954;
+  --mint: #7ed9c3;
+  --mint-deep: #0f7668;
+  --turquoise: #1f9aa8;
+  --cream: #fff6ea;
+  --butter: #ffe08a;
+  --coral: #ef5b3c;
+  --coral-deep: #c4452d;
+  --card: rgb(255 255 255 / 0.72);
+  --stroke: rgb(22 51 47 / 0.12);
+  --shadow: 0 18px 50px rgb(22 51 47 / 0.08);
+  --on-coral: #ffffff;
+}
+
+/* PLACEHOLDER visual: la mascota elegida recolorea acentos. No es un dato de la clínica. */
+:root[data-pet="gato"] {
+  --mint: #f0b7cf;
+  --mint-deep: #9d3d62;
+  --turquoise: #5eaaa4;
+  --butter: #ffe1b5;
+  --coral: #e36a8a;
+  --coral-deep: #b83b5e;
+}
+
+:root[data-pet="ave"] {
+  --mint: #8fd4f2;
+  --mint-deep: #0c7494;
+  --turquoise: #14b8c4;
+  --butter: #ffe08a;
+  --coral: #f08a3c;
+  --coral-deep: #c45e12;
+}
+
+:root[data-pet="exotico"] {
+  --mint: #b7e38a;
+  --mint-deep: #3f7a22;
+  --turquoise: #2eae78;
+  --butter: #e7f58a;
+  --coral: #ff7a3c;
+  --coral-deep: #c65316;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #0e1c1a;
+  --ink: #f3fff9;
+  --muted: #c5ddd6;
+  --mint: #8ee8d2;
+  --mint-deep: #9af0dc;
+  --turquoise: #7adbe4;
+  --cream: #17302c;
+  --butter: #ffe08a;
+  --coral: #ff8d72;
+  --coral-deep: #ffb199;
+  --card: rgb(16 36 33 / 0.78);
+  --stroke: rgb(232 255 247 / 0.14);
+  --shadow: 0 18px 50px rgb(0 0 0 / 0.35);
+  --on-coral: #1a120f;
+}
+
+.dark[data-pet="gato"] {
+  --mint: #f0b7cf;
+  --mint-deep: #ffd0e2;
+  --coral: #ff9bb6;
+  --coral-deep: #ffd0e0;
+}
+
+.dark[data-pet="ave"] {
+  --mint: #9adfff;
+  --mint-deep: #c8f1ff;
+  --coral: #ffc089;
+  --coral-deep: #ffe0c2;
+}
+
+.dark[data-pet="exotico"] {
+  --mint: #c6ee9d;
+  --mint-deep: #e4ffc4;
+  --coral: #ffb07a;
+  --coral-deep: #ffd7b8;
+}
+
+@theme inline {
+  --font-sans: var(--font-nunito), "Nunito", sans-serif;
+  --font-display: var(--font-fredoka), "Fredoka", sans-serif;
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-mint: var(--mint);
+  --color-mint-deep: var(--mint-deep);
+  --color-turquoise: var(--turquoise);
+  --color-cream: var(--cream);
+  --color-butter: var(--butter);
+  --color-coral: var(--coral);
+  --color-coral-deep: var(--coral-deep);
+  --color-card: var(--card);
+}
+
+html {
+  background: var(--bg);
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  min-height: 100%;
+  background:
+    radial-gradient(900px 480px at -10% -10%, color-mix(in srgb, var(--mint) 55%, transparent), transparent 60%),
+    radial-gradient(720px 420px at 110% 0%, color-mix(in srgb, var(--butter) 70%, transparent), transparent 55%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--butter);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--coral-deep);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -5rem;
+  z-index: 100;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.7rem 1rem;
+  font-weight: 800;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+html[data-loader="skip"] .loader {
+  display: none;
+}
+
+.glass {
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.btn {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.75rem 1.25rem;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+}
+
+.btn-coral {
+  background: var(--coral-deep);
+  color: var(--on-coral);
+}
+
+.btn-coral:hover {
+  filter: brightness(1.05);
+}
+
+.btn-ghost {
+  background: color-mix(in srgb, var(--cream) 80%, transparent);
+  color: var(--ink);
+  border: 1px solid var(--stroke);
+}
+
+.pulse-ring {
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+.field {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid var(--stroke);
+  background: color-mix(in srgb, var(--cream) 88%, white);
+  color: var(--ink);
+  padding: 0.85rem 1rem;
+  font: inherit;
+}
+
+.dark .field {
+  background: rgb(255 255 255 / 0.04);
+}
+
+.field:focus {
+  outline: 3px solid var(--mint-deep);
+  outline-offset: 1px;
+}
+
+.example-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--butter);
+  color: #1c2414;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.blob {
+  animation: blob 14s ease-in-out infinite;
+}
+
+.stroll {
+  animation: stroll 16s linear infinite;
+}
+
+.wag {
+  transform-origin: 18% 40%;
+  animation: wag 0.45s ease-in-out infinite;
+}
+
+.flap {
+  transform-origin: 80% 50%;
+  animation: flap 0.55s ease-in-out infinite;
+}
+
+.heartbeat {
+  transform-origin: center;
+  animation: heartbeat 1.3s ease-in-out infinite;
+}
+
+.flip-scene {
+  perspective: 1100px;
+}
+
+.flip-inner {
+  position: relative;
+  min-height: 17.5rem;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 1.75rem;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+html.paw-cursor,
+html.paw-cursor body,
+html.paw-cursor a,
+html.paw-cursor button {
+  cursor: none;
+}
+
+html.paw-cursor input,
+html.paw-cursor textarea,
+html.paw-cursor select,
+html.paw-cursor label {
+  cursor: auto;
+}
+
+@keyframes blob {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(20px, -18px, 0) scale(1.08);
+  }
+}
+
+@keyframes stroll {
+  0% {
+    transform: translate3d(-12vw, 0, 0) rotate(-16deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.55;
+  }
+  90% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate3d(108vw, 0, 0) rotate(-16deg);
+    opacity: 0;
+  }
+}
+
+@keyframes wag {
+  0%,
+  100% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(24deg);
+  }
+}
+
+@keyframes flap {
+  0%,
+  100% {
+    transform: rotate(8deg);
+  }
+  50% {
+    transform: rotate(-28deg);
+  }
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  18% {
+    transform: scale(1.16);
+  }
+  32% {
+    transform: scale(1);
+  }
+  46% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--coral) 50%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 16px transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob,
+  .stroll,
+  .wag,
+  .flap,
+  .heartbeat,
+  .pulse-ring,
+  .flip-inner {
+    animation: none !important;
+    transition: none !important;
+  }
+}
